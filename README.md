@@ -1,35 +1,3 @@
-# adote-um-amanha
+# Adote um Amanhã - Frontend
 
-## Project setup
-
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-
-```
-npm run build
-```
-
-### Run your unit tests
-
-```
-npm run test:unit
-```
-
-### Lints and fixes files
-
-```
-npm run lint
-```
-
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Para informações de como baixar e executar o frontned, acesse a [página da Wiki](https://tools.ages.pucrs.br/adote-um-amanha/adote-um-amanha-wiki/-/wikis/utilizacao#frontend) do nosso projeto.
