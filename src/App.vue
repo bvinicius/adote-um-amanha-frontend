@@ -1,28 +1,30 @@
 <template>
-  <div id="app">
-    <router-view />
-  </div>
+  <v-app>
+    <Toolbar :title="exampleToolbarTitle" />
+    <v-main>
+      <router-view />
+    </v-main>
+  </v-app>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script lang="ts">
+import Vue from "vue";
+import Toolbar from "./components/Toolbar.vue";
 
-#nav {
-  padding: 30px;
+export default Vue.extend({
+  name: "App",
+  components: {
+    Toolbar,
+  },
+  data: () => ({
+    exampleToolbarTitle: "Exemplo de Título",
+  }),
+});
+</script>
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+<style scoped lang="scss">
+@import "./assets/scss/fonts.scss";
+.v-application {
+  font-family: $body-font-family, sans-serif !important;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Welcome />
+    <Welcome :title="title" :description="description" />
   </div>
 </template>
 
@@ -11,5 +11,9 @@ import Welcome from "../components/Welcome.vue";
 export default Vue.extend({
   name: "Home",
   components: { Welcome },
+  data: () => ({
+    title: "Título!!",
+    description: "Descrição!!!",
+  }),
 });
 </script>
