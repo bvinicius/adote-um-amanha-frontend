@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <Toolbar :title="exampleToolbarTitle" />
+    <!-- <Toolbar :title="exampleToolbarTitle" /> -->
     <v-main>
       <router-view />
     </v-main>
@@ -9,13 +9,13 @@
 
 <script lang="ts">
 import Vue from "vue";
-import Toolbar from "./components/Toolbar.vue";
+// import Toolbar from "./components/Toolbar.vue";
 
 export default Vue.extend({
   name: "App",
-  components: {
-    Toolbar,
-  },
+  // components: {
+  //   Toolbar,
+  // },
   data: () => ({
     exampleToolbarTitle: "Exemplo de Título",
   }),
