@@ -1,11 +1,11 @@
 <template>
   <v-container fill-height class="align-start">
     <v-container class="align-start">
-      <div class="a-title">Adote um Amanhã</div>
+      <div class="a-text__title">Adote um Amanhã</div>
       <div class="img-container">
         <img src="../assets/img/logo.svg" alt="" />
       </div>
-      <div class="a-title mt-6">Bem-vindo!</div>
+      <div class="a-text__subtitle mt-6">Bem-vindo!</div>
     </v-container>
     <v-container class="align-center">
       <div class="inputs mt-6">
@@ -58,10 +58,8 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
-.a-title {
-  font-size: 26px;
-  font-weight: 400;
-  color: #191919;
+.a-text__title,
+.a-text__subtitle {
   text-align: center;
 }
 
