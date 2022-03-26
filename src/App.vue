@@ -1,6 +1,5 @@
 <template>
   <v-app>
-    <Toolbar :title="exampleToolbarTitle" />
     <v-main>
       <router-view />
     </v-main>
@@ -9,21 +8,16 @@
 
 <script lang="ts">
 import Vue from "vue";
-import Toolbar from "./components/Toolbar.vue";
 
 export default Vue.extend({
   name: "App",
-  components: {
-    Toolbar,
-  },
-  data: () => ({
-    exampleToolbarTitle: "Exemplo de Título",
-  }),
+  data: () => ({}),
 });
 </script>
 
-<style scoped lang="scss">
-@import "./assets/scss/fonts.scss";
+<style lang="scss">
+@import "./assets/scss/shared.scss";
+
 .v-application {
   font-family: $body-font-family, sans-serif !important;
 }
