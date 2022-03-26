@@ -3,7 +3,7 @@
     <v-container class="align-start">
       <div class="a-text__title">Adote um Amanhã</div>
       <div class="img-container">
-        <img src="../assets/img/logo.svg" alt="" />
+        <img src="../../../assets/img/logo.svg" alt="" />
       </div>
       <div class="a-text__subtitle mt-6">Bem-vindo!</div>
     </v-container>
@@ -32,7 +32,7 @@
 </template>
 
 <script lang="ts">
-import Input from "@/components/Input.vue";
+import Input from "../components/Input.vue";
 import Vue from "vue";
 import PasswordInput from "../components/PasswordInput.vue";
 import Button from "../components/Button.vue";
