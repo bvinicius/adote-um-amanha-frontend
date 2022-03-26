@@ -1,16 +1,22 @@
 <template>
-  <v-text-field
-    label="Senha"
+  <Input
+    v-on="$listeners"
+    v-bind="$attrs"
     :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-    outlined
-    @click:append="onIconClick"
     :type="showPassword ? 'text' : 'password'"
+    @click:append="onIconClick"
   />
 </template>
 
 <script lang="ts">
 import Vue from "vue";
+import Input from "./Input.vue";
+
 export default Vue.extend({
+  inheritAttrs: false,
+  components: {
+    Input,
+  },
   data: () => ({
     showPassword: false,
   }),
