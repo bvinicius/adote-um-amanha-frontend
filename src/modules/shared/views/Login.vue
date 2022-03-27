@@ -9,14 +9,30 @@
       </div>
       <div class="a-text__subtitle mt-6">Bem-vindo!</div>
       <div class="inputs mt-6">
-        <Input class="mx-6" label="E-mail" v-model="login" type="email" />
-        <PasswordInput class="mx-6" label="Senha" v-model="password" />
+        <v-form v-model="isFormValid">
+          <Input
+            class="mx-6"
+            label="E-mail"
+            v-model="login"
+            type="email"
+            required
+            :rules="[inputValidations.email, inputValidations.required]"
+          />
+          <PasswordInput
+            class="mx-6"
+            label="Senha"
+            v-model="password"
+            required
+            :rules="[inputValidations.required]"
+          />
+        </v-form>
         <div class="d-flex justify-center">
           <Button
             title="Entrar"
             color="primary"
             @click="onLoginButtonClick"
             :loading="loginButtonLoading"
+            :disabled="!isLoginDataValid"
           />
         </div>
       </div>
@@ -37,6 +53,7 @@ import Vue from "vue";
 import PasswordInput from "../components/PasswordInput.vue";
 import Button from "../components/Button.vue";
 import loginService from "../../institution/services/LoginService";
+import InputValidations from "../utils/InputValidations";
 
 export default Vue.extend({
   components: {
@@ -48,9 +65,18 @@ export default Vue.extend({
     login: "",
     password: "",
     loginButtonLoading: false,
+    isFormValid: false,
   }),
   mounted() {
     this.$root.hideToolbar();
+  },
+  computed: {
+    inputValidations() {
+      return InputValidations;
+    },
+    isLoginDataValid() {
+      return this.isFormValid;
+    },
   },
   methods: {
     async onLoginButtonClick() {

@@ -21,7 +21,7 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
-@import "./assets/scss/shared.scss";
+@import "./assets/scss/styles.scss";
 
 .v-application {
   font-family: $body-font-family, sans-serif !important;
