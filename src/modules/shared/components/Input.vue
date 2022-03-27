@@ -12,10 +12,8 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 .a-input {
-  .v-input__slot {
-    border-radius: 20px !important;
-    caret-color: #ffc700 !important;
-    color: white;
-  }
+  border-radius: 10px !important;
+  color: #ffc700 !important;
+  border-color: #ffc700 !important;
 }
 </style>

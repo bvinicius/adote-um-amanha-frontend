@@ -9,8 +9,8 @@
       </div>
       <div class="a-text__subtitle mt-6">Bem-vindo!</div>
       <div class="inputs mt-6">
-        <Input class="mx-10" label="E-mail" v-model="login" />
-        <PasswordInput class="mx-10" label="Senha" v-model="password" />
+        <Input class="mx-6" label="E-mail" v-model="login" type="email" />
+        <PasswordInput class="mx-6" label="Senha" v-model="password" />
         <div class="d-flex justify-center">
           <Button
             title="Entrar"
@@ -36,6 +36,7 @@ import Input from "../components/Input.vue";
 import Vue from "vue";
 import PasswordInput from "../components/PasswordInput.vue";
 import Button from "../components/Button.vue";
+import loginService from "../../institution/services/LoginService";
 
 export default Vue.extend({
   components: {
@@ -52,9 +53,11 @@ export default Vue.extend({
     this.$root.hideToolbar();
   },
   methods: {
-    onLoginButtonClick() {
-      console.log(this.login);
-      console.log(this.password);
+    async onLoginButtonClick() {
+      this.loginButtonLoading = true;
+      const result = await loginService.login(this.login, this.password);
+      this.loginButtonLoading = false;
+      console.log("result", result);
     },
   },
 });
