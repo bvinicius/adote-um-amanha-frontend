@@ -2,12 +2,12 @@
   <v-container fill-height class="align-start">
     <v-container class="align-start">
       <div class="a-text__title">Adote um Amanhã</div>
-      <div class="img-container">
-        <img src="../../../assets/img/logo.svg" alt="" />
+    </v-container>
+    <v-container class="align-center justify-center">
+      <div class="d-flex justify-center">
+        <img width="200px" src="../../../assets/img/logo.svg" />
       </div>
       <div class="a-text__subtitle mt-6">Bem-vindo!</div>
-    </v-container>
-    <v-container class="align-center">
       <div class="inputs mt-6">
         <Input class="mx-10" label="E-mail" v-model="login" />
         <PasswordInput class="mx-10" label="Senha" v-model="password" />
@@ -64,6 +64,11 @@ export default Vue.extend({
 .a-text__title,
 .a-text__subtitle {
   text-align: center;
+}
+
+.inputs {
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 .img {
