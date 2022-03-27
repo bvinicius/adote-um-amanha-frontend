@@ -31,7 +31,7 @@
   </v-container>
 </template>
 
-<script lang="ts">
+<script>
 import Input from "../components/Input.vue";
 import Vue from "vue";
 import PasswordInput from "../components/PasswordInput.vue";
@@ -48,6 +48,9 @@ export default Vue.extend({
     password: "",
     loginButtonLoading: false,
   }),
+  mounted() {
+    this.$root.hideToolbar();
+  },
   methods: {
     onLoginButtonClick() {
       console.log(this.login);
