@@ -82,8 +82,25 @@ export default Vue.extend({
     async onLoginButtonClick() {
       this.loginButtonLoading = true;
       const result = await loginService.login(this.login, this.password);
+      this.handleLoginResult(result);
       this.loginButtonLoading = false;
-      console.log("result", result);
+    },
+
+    handleLoginResult(result) {
+      switch (result.status) {
+        case 200:
+          this.onLoginSuccess();
+          break;
+        case 401:
+          this.onLogginUnauthorized();
+          break;
+      }
+    },
+    onLoginSuccess() {
+      this.$router.push("home");
+    },
+    onLogginUnauthorized() {
+      this.$root.showSnackbar("Usuário e/ou senha incorretos.");
     },
   },
 });

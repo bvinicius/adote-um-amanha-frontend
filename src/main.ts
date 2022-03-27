@@ -10,6 +10,8 @@ new Vue({
   data: () => ({
     toolbarTitle: "",
     isToolbarVisible: false,
+    snackbarMessage: "",
+    isSnackbarVisible: false,
   }),
   methods: {
     showToolbar(title?: string) {
@@ -20,6 +22,10 @@ new Vue({
     },
     hideToolbar() {
       this.isToolbarVisible = false;
+    },
+    showSnackbar(message: string) {
+      this.snackbarMessage = message;
+      this.isSnackbarVisible = true;
     },
   },
   router,

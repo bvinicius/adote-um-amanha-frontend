@@ -4,6 +4,9 @@
     <v-main>
       <router-view />
     </v-main>
+    <v-snackbar v-model="$root.isSnackbarVisible">{{
+      $root.snackbarMessage
+    }}</v-snackbar>
   </v-app>
 </template>
 
