@@ -2,21 +2,37 @@
   <v-container fill-height class="align-start">
     <v-container class="align-start">
       <div class="a-text__title">Adote um Amanhã</div>
-      <div class="img-container">
-        <img src="../../../assets/img/logo.svg" alt="" />
+    </v-container>
+    <v-container class="align-center justify-center">
+      <div class="d-flex justify-center">
+        <img width="200px" src="../../../assets/img/logo.svg" />
       </div>
       <div class="a-text__subtitle mt-6">Bem-vindo!</div>
-    </v-container>
-    <v-container class="align-center">
       <div class="inputs mt-6">
-        <Input class="mx-10" label="E-mail" v-model="login" />
-        <PasswordInput class="mx-10" label="Senha" v-model="password" />
+        <v-form v-model="isFormValid">
+          <Input
+            class="mx-6"
+            label="E-mail"
+            v-model="login"
+            type="email"
+            required
+            :rules="[inputValidations.email, inputValidations.required]"
+          />
+          <PasswordInput
+            class="mx-6"
+            label="Senha"
+            v-model="password"
+            required
+            :rules="[inputValidations.required]"
+          />
+        </v-form>
         <div class="d-flex justify-center">
           <Button
             title="Entrar"
             color="primary"
             @click="onLoginButtonClick"
             :loading="loginButtonLoading"
+            :disabled="!isLoginDataValid"
           />
         </div>
       </div>
@@ -24,34 +40,70 @@
     <v-container class="align-end">
       <v-col class="mt-10" align-self="stretch">
         <v-row class="d-flex justify-center">
-          <span>Ainda não tem conta?</span>&nbsp;<a>Cadastre-se!</a>
+          <span>Ainda não tem conta?</span>&nbsp;
+          <Link url="signup">Cadastre-se!</Link>
         </v-row>
       </v-col>
     </v-container>
   </v-container>
 </template>
 
-<script lang="ts">
+<script>
 import Input from "../components/Input.vue";
 import Vue from "vue";
 import PasswordInput from "../components/PasswordInput.vue";
 import Button from "../components/Button.vue";
+import loginService from "../../institution/services/LoginService";
+import InputValidations from "../utils/InputValidations";
+import Link from "../components/Link.vue";
 
 export default Vue.extend({
   components: {
     PasswordInput,
     Input,
     Button,
+    Link,
   },
   data: () => ({
     login: "",
     password: "",
     loginButtonLoading: false,
+    isFormValid: false,
   }),
+  mounted() {
+    this.$root.hideToolbar();
+  },
+  computed: {
+    inputValidations() {
+      return InputValidations;
+    },
+    isLoginDataValid() {
+      return this.isFormValid;
+    },
+  },
   methods: {
-    onLoginButtonClick() {
-      console.log(this.login);
-      console.log(this.password);
+    async onLoginButtonClick() {
+      this.loginButtonLoading = true;
+      const result = await loginService.login(this.login, this.password);
+      this.handleLoginResult(result);
+      this.loginButtonLoading = false;
+    },
+
+    handleLoginResult(result) {
+      switch (result.status) {
+        case 200:
+          this.onLoginSuccess();
+          break;
+        case 401:
+          this.onLoginUnauthorized();
+          break;
+      }
+    },
+    onLoginSuccess() {
+      this.$router.push("home");
+    },
+    onLoginUnauthorized() {
+      this.$root.showSnackbar("Usuário e/ou senha incorretos.");
     },
   },
 });
@@ -61,6 +113,11 @@ export default Vue.extend({
 .a-text__title,
 .a-text__subtitle {
   text-align: center;
+}
+
+.inputs {
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 .img {
