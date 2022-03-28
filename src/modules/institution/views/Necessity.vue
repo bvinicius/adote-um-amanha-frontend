@@ -54,7 +54,7 @@ export default Vue.extend({
     necessity: null,
   }),
   async mounted() {
-    this.$root.toolbarTitle = "NECESSIDADES";
+    this.$root.showToolbar("NECESSIDADES");
     this.necessity = await getNecessity(1);
   },
   components: {

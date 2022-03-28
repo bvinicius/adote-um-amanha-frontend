@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar app class="toolbar">
+  <v-app-bar app class="toolbar" v-if="visible">
     <v-spacer />
     <v-toolbar-title class="font-weight-black">{{ title }}</v-toolbar-title>
     <v-spacer />
@@ -11,6 +11,7 @@ import Vue from "vue";
 export default Vue.extend({
   props: {
     title: String,
+    visible: Boolean,
   },
 });
 </script>
