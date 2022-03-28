@@ -11,9 +11,13 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-.a-input {
-  border-radius: 10px !important;
-  color: #ffc700 !important;
-  border-color: #ffc700 !important;
+.v-text-field {
+  border-radius: 10px;
+
+  &--outlined {
+    ::v-deep fieldset {
+      border-color: var(--v-primary-base);
+    }
+  }
 }
 </style>

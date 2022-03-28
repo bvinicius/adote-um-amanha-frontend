@@ -40,7 +40,8 @@
     <v-container class="align-end">
       <v-col class="mt-10" align-self="stretch">
         <v-row class="d-flex justify-center">
-          <span>Ainda não tem conta?</span>&nbsp;<a>Cadastre-se!</a>
+          <span>Ainda não tem conta?</span>&nbsp;
+          <Link url="signup">Cadastre-se!</Link>
         </v-row>
       </v-col>
     </v-container>
@@ -54,12 +55,14 @@ import PasswordInput from "../components/PasswordInput.vue";
 import Button from "../components/Button.vue";
 import loginService from "../../institution/services/LoginService";
 import InputValidations from "../utils/InputValidations";
+import Link from "../components/Link.vue";
 
 export default Vue.extend({
   components: {
     PasswordInput,
     Input,
     Button,
+    Link,
   },
   data: () => ({
     login: "",
