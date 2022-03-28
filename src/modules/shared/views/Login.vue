@@ -95,14 +95,14 @@ export default Vue.extend({
           this.onLoginSuccess();
           break;
         case 401:
-          this.onLogginUnauthorized();
+          this.onLoginUnauthorized();
           break;
       }
     },
     onLoginSuccess() {
       this.$router.push("home");
     },
-    onLogginUnauthorized() {
+    onLoginUnauthorized() {
       this.$root.showSnackbar("Usuário e/ou senha incorretos.");
     },
   },

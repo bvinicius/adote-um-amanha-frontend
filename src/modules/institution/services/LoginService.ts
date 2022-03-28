@@ -3,7 +3,6 @@ const FAKE_JWT = `eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1Z
 
 function login(email: string, password: string): Promise<HTTPResponse> {
   // Método com implementação mocada enquanto não existe integração com o backend.
-  console.log(email, password);
   return new Promise((resolve) => {
     const responseMock = {
       status: 401,
