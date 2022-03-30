@@ -19,7 +19,7 @@
 <v-row class>
   <v-column >
     <a  v-bind:href="getUrl">Endereço</a>
-       <div class="">Meu dereno</div>
+       <div class="">{{instituition.adress}}</div>
       </v-column>
 </v-row>
     
