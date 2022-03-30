@@ -12,15 +12,21 @@
         v-for="attribute in attributes"
         :key="attribute.key"
       >
-        
         <div class="a-text">{{ attribute.key }}</div>
         <div class="a-text light">{{ attribute.value }}</div>
       </v-row>
-     
 
-
-
+<v-row class>
+  <v-column >
+    <a  v-bind:href="getUrl">Endereço</a>
+       <div class="">Meu dereno</div>
+      </v-column>
+</v-row>
     
+   
+     
+      
+      
     </v-container>
 
 
@@ -43,6 +49,8 @@
 import Vue from "vue";
 import { getInstituition } from "../services/InstituitionService";
 import Button from "../../shared/components/Button.vue";
+import InstituitionEntity from "../../institution/models/InstituitionEntity";
+
 
 export default Vue.extend({
   data: () => ({
@@ -70,12 +78,14 @@ export default Vue.extend({
           key: "Site",
           value: this.instituition.site
         },
-        {
-          key: "Endereço",
-          value: this.instituition.adress
-        }
+        
+
       ];
+
     },
+     getUrl(){
+       return "https://www.google.com/maps/search/"+this.instituition.adress
+    }
   },
 });
 </script>
@@ -93,6 +103,10 @@ export default Vue.extend({
 .a-text__bold-title{
     padding: 30px;
 }
+
+
+
+
 
 </style>
 
