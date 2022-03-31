@@ -2,10 +2,10 @@
   <v-container class="align-start" fill-height>
     <v-container class="align-start px-7" v-if="instituition">
       <v-row class="mt-3 mb-4">
-       <div class="header">
-            <img width="65px" src="../../../assets/img/instituition-logo.png"/>
-            <div class="a-text__bold-title">{{ instituition.name }}</div>
-       </div>
+        <div class="header">
+          <img width="65px" src="../../../assets/img/instituition-logo.png" />
+          <div class="a-text__bold-title">{{ instituition.name }}</div>
+        </div>
       </v-row>
       <v-row
         class="justify-space-between mb-3"
@@ -16,19 +16,16 @@
         <div class="a-text light">{{ attribute.value }}</div>
       </v-row>
 
-<v-row class>
-  <v-column >
-    <a  v-bind:href="getUrl">Endereço</a>
-       <div class="">{{instituition.adress}}</div>
-      </v-column>
-</v-row>
-    
-   
-     
-      
-      
+      <v-row class>
+        <v-column>
+          Endereço
+          <v-btn icon v-bind:href="getUrl" target="_blank">
+            <v-icon>mdi-open-in-new</v-icon>
+          </v-btn>
+          <div class="">{{ instituition.adress }}</div>
+        </v-column>
+      </v-row>
     </v-container>
-
 
     <v-container class="align-end">
       <v-row class="justify-center">
@@ -49,8 +46,6 @@
 import Vue from "vue";
 import { getInstituition } from "../services/InstituitionService";
 import Button from "../../shared/components/Button.vue";
-import InstituitionEntity from "../../institution/models/InstituitionEntity";
-
 
 export default Vue.extend({
   data: () => ({
@@ -58,7 +53,7 @@ export default Vue.extend({
   }),
   async mounted() {
     this.$root.showToolbar("Perfil da instituição");
-    this.instituition = await getInstituition(1)
+    this.instituition = await getInstituition(1);
   },
   components: {
     Button,
@@ -68,24 +63,21 @@ export default Vue.extend({
       return [
         {
           key: "Telefone",
-          value: this.instituition.phone
+          value: this.instituition.phone,
         },
         {
           key: "Email",
-          value: this.instituition.email
+          value: this.instituition.email,
         },
         {
           key: "Site",
-          value: this.instituition.site
+          value: this.instituition.site,
         },
-        
-
       ];
-
     },
-     getUrl(){
-       return "https://www.google.com/maps/search/"+this.instituition.adress
-    }
+    getUrl() {
+      return "https://www.google.com/maps/search/" + this.instituition.adress;
+    },
   },
 });
 </script>
@@ -95,18 +87,12 @@ export default Vue.extend({
   color: #000000;
 }
 
-.header{
-    display: flex;
-    align-items: center;
+.header {
+  display: flex;
+  align-items: center;
 }
 
-.a-text__bold-title{
-    padding: 30px;
+.a-text__bold-title {
+  padding: 30px;
 }
-
-
-
-
-
 </style>
-
