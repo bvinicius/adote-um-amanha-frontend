@@ -1,3 +1,5 @@
+import { EnumerableObject } from "../types/EnumerableObject";
+
 export enum Subcategory {
   health,
   professionalization,
@@ -10,15 +12,21 @@ function toString(subcategory: Subcategory): string {
   return subcategoryStrings[subcategory];
 }
 
-function allEntries(): EntryType[] {
+function allObjects(): EnumerableObject[] {
   return Object.entries(subcategoryStrings).map(([value, name]) => ({
     value,
-    name
+    name,
   }));
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const subcategoryStrings: SubcategoryString = {
+function toObject(subcategory: Subcategory): EnumerableObject {
+  return {
+    name: subcategoryStrings[subcategory],
+    value: subcategory.toString(),
+  };
+}
+
+const subcategoryStrings = {
   [Subcategory.health]: "Saúde",
   [Subcategory.professionalization]: "Profissionalização",
   [Subcategory.education]: "Educação",
@@ -26,20 +34,8 @@ const subcategoryStrings: SubcategoryString = {
   [Subcategory.others]: "Outros",
 };
 
-interface EntryType {
-  value: string,
-  name: string,
-}
-
-interface SubcategoryString {
-  [Subcategory.health]: string
-  [Subcategory.professionalization]: string
-  [Subcategory.education]: string
-  [Subcategory.food]: string
-  [Subcategory.others]: string
-}
-
 export default {
   toString,
-  allEntries
+  allObjects,
+  toObject,
 };
