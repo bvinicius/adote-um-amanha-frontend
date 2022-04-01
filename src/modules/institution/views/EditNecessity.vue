@@ -1,5 +1,9 @@
 <template>
-  <v-container class="px-8 d-flex align-start" v-if="newNecessity" fill-height>
+  <v-container
+    class="px-8 px-sm-4 d-flex align-start"
+    v-if="newNecessity"
+    fill-height
+  >
     <v-container class="px-0">
       <v-form v-model="isFormValid">
         <v-row class="mt-8">
@@ -27,6 +31,13 @@
           ></TextArea>
         </v-row>
         <v-row>
+          <Input
+            prepend-inner-icon="mdi-link"
+            placeholder="URL"
+            v-model="newNecessity.url"
+          />
+        </v-row>
+        <v-row>
           <v-radio-group v-model="newNecessity.category">
             <v-radio
               v-for="category of allCategories"
@@ -43,7 +54,7 @@
       <v-row class="justify-center">
         <Button
           title="Excluir"
-          class="mr-6"
+          class="button--edit mr-6"
           color="error"
           outlined
           prependIcon="mdi-delete"
@@ -53,6 +64,7 @@
           color="primary"
           :disabled="!isSaveButtonDisabled"
           prependIcon="mdi-content-save"
+          class="button--edit"
         />
       </v-row>
     </v-container>
@@ -89,7 +101,7 @@ export default Vue.extend({
       createdDate: new Date(),
       category: Category.service,
       subcategory: Subcategory.health,
-      url: "google.com",
+      url: "https://www.google.com",
       description: "Teste descrição",
     },
     newNecessity: null,
@@ -134,4 +146,8 @@ export default Vue.extend({
 Button;
 </script>
 
-<style></style>
+<style scoped>
+.button--edit {
+  max-width: 120px;
+}
+</style>
