@@ -5,17 +5,15 @@
     </v-row>
     <v-row>
       <Select
-        :items="testItems"
+        :items="allSubcategories"
         placeholder="Subcategoria"
         v-model="necessity.subcategory"
       />
     </v-row>
     <v-row>
       <TextArea
-        outlined
         name="input-descricao"
         label="Descrição"
-        value="Descrição da necessidade."
         v-model="necessity.description"
       ></TextArea>
     </v-row>
@@ -37,11 +35,14 @@ import Input from "../../shared/components/Input.vue";
 import Button from "../../shared/components/Button.vue";
 import Select from "../../shared/components/Select.vue";
 import TextArea from "../../shared/components/TextArea.vue";
-import Categories, { Category } from "../../shared/enums/Category";
-import SubCategories, { Subcategory } from "../../shared/enums/Subcategory";
+import CategoryUtils, { Category } from "../../shared/enums/Category";
+import SubcategoriesUtils, {
+  Subcategory,
+} from "../../shared/enums/Subcategory";
 export default Vue.extend({
   mounted() {
     this.$root.showToolbar("NECESSIDADE");
+    this.newNecessity = { ...this.necessity };
   },
   components: {
     Input,
@@ -50,7 +51,6 @@ export default Vue.extend({
     TextArea,
   },
   data: () => ({
-    testItems: ["Valor1", "Valor2", "Valor3"],
     necessity: {
       id: 12,
       title: "Necessidade x",
@@ -60,7 +60,13 @@ export default Vue.extend({
       url: "google.com",
       description: "Teste descrição",
     },
+    newNecessity: null,
   }),
+  computed: {
+    allSubcategories() {
+      return SubcategoriesUtils.allEntries();
+    },
+  },
 });
 Button;
 </script>

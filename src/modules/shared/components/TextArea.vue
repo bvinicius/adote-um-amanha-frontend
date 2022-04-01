@@ -11,7 +11,7 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-.v-textarea {
+.v-text-field {
   border-radius: 10px;
 
   &--outlined {
