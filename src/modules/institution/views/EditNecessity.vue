@@ -75,6 +75,8 @@
       :title="confirmationTitle"
       :message="confirmationMessage"
       @cancel="isModalOpen = false"
+      @confirm="onDeleteConfirmed"
+      :loading="isModalLoading"
     />
   </v-container>
 </template>
@@ -84,7 +86,7 @@ import Vue from "vue";
 import Input from "../../shared/components/Input.vue";
 import Button from "../../shared/components/Button.vue";
 import Select from "../../shared/components/Select.vue";
-import { getNecessity } from "../necessityService";
+import { deleteNecessity, getNecessity } from "../necessityService";
 import TextArea from "../../shared/components/TextArea.vue";
 import CategoryUtils from "../../shared/enums/Category";
 import SubcategoriesUtils from "../../shared/enums/Subcategory";
@@ -106,6 +108,7 @@ export default Vue.extend({
     confirmationTitle: "",
     confirmationMessage: "",
     isModalOpen: false,
+    isModalLoading: false,
   }),
   async mounted() {
     this.$root.showToolbar("EDITAR NECESSIDADE");
@@ -149,14 +152,22 @@ export default Vue.extend({
   },
   methods: {
     onDeleteClick() {
-      this.confirmationTitle = "Excluir Necessidade";
+      this.confirmationTitle = "EXCLUIR NECESSIDADE";
       this.confirmationMessage =
         "Tem certeza que deseja excluir esta necessidade?";
       this.isModalOpen = true;
     },
+    onDeleteConfirmed() {
+      this.isModalLoading = true;
+      deleteNecessity(this.necessity.id).then(() => {
+        this.isModalOpen = false;
+        this.isModalLoading = false;
+        this.$root.showSnackbar("Necessidade Excluída.");
+        this.$router.push("/necessities");
+      });
+    },
   },
 });
-Button;
 </script>
 
 <style scoped>

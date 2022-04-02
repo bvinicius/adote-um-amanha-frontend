@@ -1,13 +1,17 @@
 <template>
-  <v-dialog max-width="330" height="auto" v-bind="$attrs" v-on="$listeners">
-    <v-card>
-      <v-card-title class="text-h5">
-        {{ title }}
-      </v-card-title>
+  <v-dialog max-width="330" v-bind="$attrs" v-on="$listeners">
+    <v-card class="py-6 px-4">
+      <div class="d-flex justify-center pb-8">
+        <span class="dialog--title">
+          {{ title }}
+        </span>
+      </div>
 
-      <v-card-text>
-        {{ message }}
-      </v-card-text>
+      <div class="d-flex justify-center pb-8">
+        <span class="dialog--body">
+          {{ message }}
+        </span>
+      </div>
 
       <v-card-actions class="justify-center">
         <Button
@@ -22,6 +26,7 @@
           title="Confirmar"
           color="primary"
           @click="onConfirmClick"
+          :loading="loading"
         />
       </v-card-actions>
     </v-card>
@@ -34,6 +39,7 @@ export default Vue.extend({
   props: {
     title: String,
     message: String,
+    loading: Boolean,
   },
   components: {
     Button,
@@ -49,7 +55,22 @@ export default Vue.extend({
 });
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+.dialog {
+  &--container {
+    min-height: 180px;
+  }
+
+  &--title {
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  &--body {
+    text-align: center;
+  }
+}
+
 .button--confirm {
   max-width: 120px;
 }
