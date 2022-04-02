@@ -14,7 +14,7 @@ function toString(subcategory: Subcategory): string {
 
 function allObjects(): EnumerableObject[] {
   return Object.entries(subcategoryStrings).map(([value, name]) => ({
-    value,
+    value: Number(value),
     name,
   }));
 }
@@ -22,7 +22,7 @@ function allObjects(): EnumerableObject[] {
 function toObject(subcategory: Subcategory): EnumerableObject {
   return {
     name: subcategoryStrings[subcategory],
-    value: subcategory.toString(),
+    value: subcategory,
   };
 }
 

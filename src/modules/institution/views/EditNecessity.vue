@@ -21,6 +21,7 @@
             item-text="name"
             item-value="value"
             :rules="[inputValidations.required]"
+            :return-object="false"
           />
         </v-row>
         <v-row>
@@ -98,6 +99,7 @@ import CategoryUtils from "../../shared/enums/Category";
 import SubcategoriesUtils from "../../shared/enums/Subcategory";
 import InputValidations from "../../shared/utils/InputValidations";
 import ConfirmationModal from "../../shared/components/ConfirmationModal.vue";
+import { areEqual } from "../../shared/utils/ObjectComparator";
 
 export default Vue.extend({
   components: {
@@ -149,9 +151,7 @@ export default Vue.extend({
       return this.necessityHasChanged && this.isFormValid;
     },
     necessityHasChanged() {
-      return (
-        JSON.stringify(this.newNecessity) !== JSON.stringify(this.necessity)
-      );
+      return !areEqual(this.necessity, this.newNecessity);
     },
     inputValidations() {
       return InputValidations;

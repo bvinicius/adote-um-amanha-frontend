@@ -62,14 +62,14 @@ function toObject(
   categoryMap: CategoryMap
 ): EnumerableObject {
   return {
-    value: category.toString(),
+    value: category,
     name: categoryMap[category],
   };
 }
 
 function allObjects(categoryMap: CategoryMap): EnumerableObject[] {
   return Object.entries(categoryMap).map(([value, name]) => ({
-    value,
+    value: Number(value),
     name,
   }));
 }
