@@ -69,6 +69,13 @@
         />
       </v-row>
     </v-container>
+
+    <ConfirmationModal
+      v-model="isModalOpen"
+      :title="confirmationTitle"
+      :message="confirmationMessage"
+      @cancel="isModalOpen = false"
+    />
   </v-container>
 </template>
 
@@ -82,6 +89,7 @@ import TextArea from "../../shared/components/TextArea.vue";
 import CategoryUtils from "../../shared/enums/Category";
 import SubcategoriesUtils from "../../shared/enums/Subcategory";
 import InputValidations from "../../shared/utils/InputValidations";
+import ConfirmationModal from "../../shared/components/ConfirmationModal.vue";
 
 export default Vue.extend({
   components: {
@@ -89,15 +97,19 @@ export default Vue.extend({
     Button,
     Select,
     TextArea,
+    ConfirmationModal,
   },
   data: () => ({
     necessity: {},
     newNecessity: null,
     isFormValid: true,
+    confirmationTitle: "",
+    confirmationMessage: "",
+    isModalOpen: false,
   }),
   async mounted() {
     this.$root.showToolbar("EDITAR NECESSIDADE");
-    this.necessity = await getNecessity(1);
+    this.necessity = await getNecessity(this.$route.params.id);
     this.newNecessity = { ...this.necessity };
   },
   computed: {
@@ -137,10 +149,10 @@ export default Vue.extend({
   },
   methods: {
     onDeleteClick() {
-      this.$root.showConfirmationModal(
-        "Excluir Solicitação",
-        "Tem certeza que deseja excluir esta solicitação? "
-      );
+      this.confirmationTitle = "Excluir Necessidade";
+      this.confirmationMessage =
+        "Tem certeza que deseja excluir esta necessidade?";
+      this.isModalOpen = true;
     },
   },
 });

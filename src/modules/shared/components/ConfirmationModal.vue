@@ -10,14 +10,24 @@
       </v-card-text>
 
       <v-card-actions class="justify-center">
-        <Button class="button--confirm mr-2" title="Cancelar" color="primary" />
-
-        <Button class="button--confirm" title="Confirmar" color="primary" />
+        <Button
+          class="button--confirm mr-2"
+          title="Cancelar"
+          color="primary"
+          @click="onCancelClick"
+          outlined
+        />
+        <Button
+          class="button--confirm"
+          title="Confirmar"
+          color="primary"
+          @click="onConfirmClick"
+        />
       </v-card-actions>
     </v-card>
   </v-dialog>
 </template>
-<script lang="ts">
+<script>
 import Vue from "vue";
 import Button from "./Button.vue";
 export default Vue.extend({
@@ -27,6 +37,14 @@ export default Vue.extend({
   },
   components: {
     Button,
+  },
+  methods: {
+    onCancelClick() {
+      this.$emit("cancel");
+    },
+    onConfirmClick() {
+      this.$emit("confirm");
+    },
   },
 });
 </script>

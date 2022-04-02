@@ -62,7 +62,6 @@ type CategoryMap = {
 };
 
 export default {
-  toString,
   toPluralString,
   toSingularString,
   allPluralObjects,

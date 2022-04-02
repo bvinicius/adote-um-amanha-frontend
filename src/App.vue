@@ -7,25 +7,18 @@
     <v-snackbar v-model="$root.isSnackbarVisible">{{
       $root.snackbarMessage
     }}</v-snackbar>
-    <ConfirmationModal
-      v-model="$root.isConfirmationDialogVisible"
-      :title="$root.confirmationDialogTitle"
-      :message="$root.confirmationDialogMessage"
-    />
   </v-app>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
 import Toolbar from "./modules/shared/components/Toolbar.vue";
-import ConfirmationModal from "./modules/shared/components/ConfirmationModal.vue";
 
 export default Vue.extend({
   name: "App",
   data: () => ({}),
   components: {
     Toolbar,
-    ConfirmationModal,
   },
 });
 </script>
