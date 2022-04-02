@@ -5,26 +5,54 @@ export enum Category {
   service,
 }
 
+/**
+ * Retorna um texto no plural que representa o enum de categoria passado por parâmetro.
+ * @param category
+ * @returns {string}
+ */
 function toPluralString(category: Category): string {
   return pluralCategoryStrings[category];
 }
 
+/**
+ * Retorna um texto no singular que representa o enum de categoria passado por parâmetro.
+ * @param category
+ * @returns {string}
+ */
 function toSingularString(category: Category): string {
   return singularCategoryStrings[category];
 }
 
+/**
+ * Retorna uma lista com objetos do tipo `EnumerableObject`, um para cada valor possível do enum. O campo `name` será retornado no plural.
+ * @returns {EnumerableObject[]}
+ */
 function allPluralObjects(): EnumerableObject[] {
   return allObjects(pluralCategoryStrings);
 }
 
+/**
+ * Retorna uma lista com objetos do tipo `EnumerableObject`, um para cada valor possível do enum. O campo `name` será retornado no singular.
+ * @returns {EnumerableObject[]}
+ */
 function allSingularObjects(): EnumerableObject[] {
   return allObjects(singularCategoryStrings);
 }
 
+/**
+ * Retorna um objeto na estrutura do `EnumerableObject` para o enum passado por parâmetro. O campo `name` será retornado no plural.
+ * @param category
+ * @returns {EnumerableObject}
+ */
 function toPluralObject(category: Category): EnumerableObject {
   return toObject(category, pluralCategoryStrings);
 }
 
+/**
+ * Retorna um objeto na estrutura do `EnumerableObject` para o enum passado por parâmetro. O campo `name` será retornado no singular.
+ * @param category
+ * @returns {EnumerableObject}
+ */
 function toSingularObject(category: Category): EnumerableObject {
   return toObject(category, singularCategoryStrings);
 }
@@ -34,7 +62,7 @@ function toObject(
   categoryMap: CategoryMap
 ): EnumerableObject {
   return {
-    value: category,
+    value: category.toString(),
     name: categoryMap[category],
   };
 }
