@@ -12,6 +12,9 @@ new Vue({
     isToolbarVisible: false,
     snackbarMessage: "",
     isSnackbarVisible: false,
+    confirmationDialogTitle: "",
+    confirmationDialogMessage: "",
+    isConfirmationDialogVisible: false,
   }),
   methods: {
     showToolbar(title?: string) {
@@ -26,6 +29,11 @@ new Vue({
     showSnackbar(message: string) {
       this.snackbarMessage = message;
       this.isSnackbarVisible = true;
+    },
+    showConfirmationModal(title: string, message?: string) {
+      this.isConfirmationDialogVisible = true;
+      this.confirmationDialogTitle = title;
+      this.confirmationDialogMessage = message || "";
     },
   },
   router,

@@ -57,6 +57,7 @@
           class="button--edit mr-6"
           color="error"
           outlined
+          @click="onDeleteClick"
           prependIcon="mdi-delete"
         />
         <Button
@@ -76,18 +77,13 @@ import Vue from "vue";
 import Input from "../../shared/components/Input.vue";
 import Button from "../../shared/components/Button.vue";
 import Select from "../../shared/components/Select.vue";
+import { getNecessity } from "../necessityService";
 import TextArea from "../../shared/components/TextArea.vue";
-import CategoryUtils, { Category } from "../../shared/enums/Category";
-import SubcategoriesUtils, {
-  Subcategory,
-} from "../../shared/enums/Subcategory";
+import CategoryUtils from "../../shared/enums/Category";
+import SubcategoriesUtils from "../../shared/enums/Subcategory";
 import InputValidations from "../../shared/utils/InputValidations";
 
 export default Vue.extend({
-  mounted() {
-    this.$root.showToolbar("NECESSIDADE");
-    this.newNecessity = { ...this.necessity };
-  },
   components: {
     Input,
     Button,
@@ -95,18 +91,15 @@ export default Vue.extend({
     TextArea,
   },
   data: () => ({
-    necessity: {
-      id: 12,
-      title: "Necessidade x",
-      createdDate: new Date(),
-      category: Category.service,
-      subcategory: Subcategory.health,
-      url: "https://www.google.com",
-      description: "Teste descrição",
-    },
+    necessity: {},
     newNecessity: null,
     isFormValid: true,
   }),
+  async mounted() {
+    this.$root.showToolbar("EDITAR NECESSIDADE");
+    this.necessity = await getNecessity(1);
+    this.newNecessity = { ...this.necessity };
+  },
   computed: {
     allSubcategories() {
       return SubcategoriesUtils.allObjects();
@@ -140,6 +133,14 @@ export default Vue.extend({
     },
     inputValidations() {
       return InputValidations;
+    },
+  },
+  methods: {
+    onDeleteClick() {
+      this.$root.showConfirmationModal(
+        "Excluir Solicitação",
+        "Tem certeza que deseja excluir esta solicitação? "
+      );
     },
   },
 });
