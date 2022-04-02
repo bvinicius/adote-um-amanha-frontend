@@ -66,6 +66,8 @@
           :disabled="!isSaveButtonDisabled"
           prependIcon="mdi-content-save"
           class="button--edit"
+          @click="onSaveButtonClick"
+          :loading="isSaveButtonLoading"
         />
       </v-row>
     </v-container>
@@ -86,7 +88,11 @@ import Vue from "vue";
 import Input from "../../shared/components/Input.vue";
 import Button from "../../shared/components/Button.vue";
 import Select from "../../shared/components/Select.vue";
-import { deleteNecessity, getNecessity } from "../necessityService";
+import {
+  deleteNecessity,
+  getNecessity,
+  updateNecessity,
+} from "../necessityService";
 import TextArea from "../../shared/components/TextArea.vue";
 import CategoryUtils from "../../shared/enums/Category";
 import SubcategoriesUtils from "../../shared/enums/Subcategory";
@@ -109,6 +115,7 @@ export default Vue.extend({
     confirmationMessage: "",
     isModalOpen: false,
     isModalLoading: false,
+    isSaveButtonLoading: false,
   }),
   async mounted() {
     this.$root.showToolbar("EDITAR NECESSIDADE");
@@ -164,6 +171,14 @@ export default Vue.extend({
         this.isModalLoading = false;
         this.$root.showSnackbar("Necessidade Excluída.");
         this.$router.push("/necessities");
+      });
+    },
+    onSaveButtonClick() {
+      this.isSaveButtonLoading = true;
+      updateNecessity(this.necessity.id).then(() => {
+        this.isSaveButtonLoading = false;
+        this.$root.showSnackbar("Alterações salvas!.");
+        this.$router.go(-1);
       });
     },
   },

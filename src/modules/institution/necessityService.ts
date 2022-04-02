@@ -2,7 +2,7 @@ import { Category } from "../shared/enums/Category";
 import { Subcategory } from "../shared/enums/Subcategory";
 import { NecessityEntity } from "./models/NecessityEntity";
 
-export async function getNecessity(id: number): Promise<NecessityEntity> {
+export function getNecessity(id: number): Promise<NecessityEntity> {
   //TODO: implementar corretamente na integração.
   const necessityMock: NecessityEntity = {
     id,
@@ -17,11 +17,22 @@ export async function getNecessity(id: number): Promise<NecessityEntity> {
   return Promise.resolve(necessityMock);
 }
 
-export async function deleteNecessity(id: number): Promise<number> {
+export function deleteNecessity(id: number): Promise<number> {
   //TODO: implementar corretamente na integração.
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(id);
+    }, 400);
+  });
+}
+
+export function updateNecessity(
+  necessity: NecessityEntity
+): Promise<NecessityEntity> {
+  //TODO: implementar corretamente na integração.
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(necessity);
     }, 400);
   });
 }
