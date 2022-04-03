@@ -5,9 +5,12 @@
     elevation="0"
     v-bind="$attrs"
     v-on="$listeners"
+    rounded
   >
     <v-icon v-if="prependIcon" left dark>{{ prependIcon }}</v-icon>
-    {{ title }}
+    <span class="a-button--title">
+      {{ title }}
+    </span>
     <v-icon v-if="appendIcon" right dark>{{ appendIcon }}</v-icon>
   </v-btn>
 </template>
@@ -24,15 +27,28 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
-.a-button {
-  text-transform: none !important;
-  border-radius: 16px !important;
+.v-btn {
+  text-transform: none;
   color: #191919 !important;
-  font-size: 16px !important;
-  font-weight: 400 !important;
+  font-size: 16px;
+  font-weight: 400;
   box-sizing: border-box;
-  border: 2px solid #ffd25a !important;
   transition: 300ms;
+  border: 2px solid #ffd25a;
+
+  .v-icon {
+    color: #191919;
+  }
+}
+
+.error--text {
+  border: 2px solid var(--v-error-base);
+}
+
+.a-button {
+  &--title {
+    color: #191919 !important;
+  }
 }
 
 .disabled {
