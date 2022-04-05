@@ -1,13 +1,14 @@
-import { InstituitionEntity } from "../models/InstituitionEntity";
+import { HTTP } from "@/api/http-common";
+import { InstitutionDetailDTO } from "../dtos/InstitutionDetailDTO";
+import { InstitutionEntity } from "../models/InstitutionEntity";
 
-export async function getInstituition(id: number): Promise<InstituitionEntity> {
-  const instituitionMock: InstituitionEntity = {
-    id,
-    name: "Lar esperança",
-    phone: "(51) 3517-4877",
-    email: "Laresperança@hotmail.com",
-    site: "https://laresperanca.com",
-    adress: "R. Deodoro, 250 - Mário Quintana, Porto Alegre - RS, 91260-370"
-  };
-  return Promise.resolve(instituitionMock);
+export async function getInstituition(id: number): Promise<InstitutionEntity> {
+  const response = await HTTP.get(`/casas/${id}`);
+
+  const body: InstitutionDetailDTO = response.data;
+
+  const institution = new InstitutionEntity(id, body.nome, body.telefone, body.email, body.site, body.endereco);
+
+   return Promise.resolve(institution);
+
 }

@@ -18,14 +18,13 @@ const routes: Array<RouteConfig> = [
     component: Login,
   },
   {
-    //path: "/necessity/:id",
-    path: "/necessity/",
+    path: "/necessity/:id",
     name: "Institution necessity",
     component: Necessity,
   },
 
   {
-    path: "/casa",
+    path: "/institution/:id",
     name: "Instituition instituition",
     component: Instituition,
   },

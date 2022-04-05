@@ -22,7 +22,7 @@
           <v-btn icon v-bind:href="getUrl" target="_blank">
             <v-icon>mdi-open-in-new</v-icon>
           </v-btn>
-          <div class="">{{ instituition.adress }}</div>
+          <div class="">{{ instituition.address }}</div>
         </v-column>
       </v-row>
     </v-container>
@@ -53,7 +53,7 @@ export default Vue.extend({
   }),
   async mounted() {
     this.$root.showToolbar("Perfil da instituição");
-    this.instituition = await getInstituition(1);
+    this.instituition = await getInstituition(this.$route.params.id);
   },
   components: {
     Button,
@@ -76,7 +76,7 @@ export default Vue.extend({
       ];
     },
     getUrl() {
-      return "https://www.google.com/maps/search/" + this.instituition.adress;
+      return "https://www.google.com/maps/search/" + this.instituition.getAddress();
     },
   },
 });
