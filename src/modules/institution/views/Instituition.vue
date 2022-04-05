@@ -22,7 +22,7 @@
           <v-btn icon v-bind:href="getUrl" target="_blank">
             <v-icon>mdi-open-in-new</v-icon>
           </v-btn>
-          <div class="">{{ instituition.address }}</div>
+          <div class="">{{ instituition.getAddress() }}</div>
         </v-column>
       </v-row>
     </v-container>
