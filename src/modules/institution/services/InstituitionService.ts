@@ -9,6 +9,6 @@ export async function getInstituition(id: number): Promise<InstitutionEntity> {
 
   const institution = new InstitutionEntity(id, body.nome, body.telefone, body.email, body.site, body.endereco);
 
-   return Promise.resolve(institution);
+  return Promise.resolve(institution);
 
 }

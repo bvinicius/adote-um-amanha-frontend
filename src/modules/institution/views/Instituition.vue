@@ -17,17 +17,17 @@
       </v-row>
 
       <v-row class>
-        <v-column>
+        <v-col>
           Endereço
           <v-btn icon v-bind:href="getUrl" target="_blank">
             <v-icon>mdi-open-in-new</v-icon>
           </v-btn>
           <div class="">{{ instituition.getAddress() }}</div>
-        </v-column>
+        </v-col>
       </v-row>
     </v-container>
 
-    <v-container class="align-end">
+    <v-container class="align-self-end mb-8">
       <v-row class="justify-center">
         <Button
           class="mr-4"
@@ -76,7 +76,9 @@ export default Vue.extend({
       ];
     },
     getUrl() {
-      return "https://www.google.com/maps/search/" + this.instituition.getAddress();
+      return (
+        "https://www.google.com/maps/search/" + this.instituition.getAddress()
+      );
     },
   },
 });
