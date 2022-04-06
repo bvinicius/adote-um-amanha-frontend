@@ -6,6 +6,8 @@ import Instituition from "../modules/institution/views/Instituition.vue";
 import SplashScreen from "../modules/shared/views/SplashScreen.vue";
 import EditNecessity from "../modules/institution/views/EditNecessity.vue";
 import RegisterNecessity from "../modules/institution/views/RegisterNecessity.vue";
+import { isAuthenticated } from "@/modules/shared/utils/AuthenticationManager";
+import { nextTick } from "vue/types/umd";
 
 Vue.use(VueRouter);
 
@@ -45,5 +47,12 @@ const routes: Array<RouteConfig> = [
 const router = new VueRouter({
   routes,
 });
+
+router.beforeEach((to, from, next) => {
+  if (!isAuthenticated() && to.name !== "Login") {
+    next({ name: 'Login' })
+  }
+  next()
+})
 
 export default router;

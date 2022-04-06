@@ -8,4 +8,14 @@ export function saveAccessToken(accessToken: string): void {
 export function getAccessToken(): string | null {
     console.log('passou aqui!!!')
     return localStorage.getItem(ACCESS_TOKEN_KEY);
-} 
+}
+
+export function isAuthenticated(): boolean {
+    const token = getAccessToken();
+    if (!token) {
+        console.log('not authenticated')
+        return false;
+    }
+    console.log('authenticated')
+    return true;
+}

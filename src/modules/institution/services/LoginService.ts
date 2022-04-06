@@ -1,5 +1,5 @@
 import { HTTP } from "@/api/http-common";
-import { saveAccessToken } from "@/modules/shared/utils/AccessTokenManager";
+import { saveAccessToken } from "@/modules/shared/utils/AuthenticationManager";
 
 async function login(email: string, password: string): Promise<HTTPResponse> {
   return HTTP.post('public/autenticacao/login', { email, senha: password })
