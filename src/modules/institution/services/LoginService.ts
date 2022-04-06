@@ -1,24 +1,28 @@
 import { HTTP } from "@/api/http-common";
+import { saveAccessToken } from "@/modules/shared/utils/AccessTokenManager";
 
 async function login(email: string, password: string): Promise<HTTPResponse> {
-  const response = await HTTP.post('public/autenticacao/login', { email, senha: password })
-    .catch(err => {
-      return Promise.resolve({
-        data: err.data,
-        status: err.statusCode || 500
-      })
-    });
-
-  const httpResponse: HTTPResponse = {
-    data: response.data,
-    status: response.status
-  };
-  return Promise.resolve(httpResponse);
+  return HTTP.post('public/autenticacao/login', { email, senha: password })
+    .then(response => {
+      const httpResponse: HTTPResponse = {
+        data: response.data,
+        status: response.status
+      };
+      saveAccessToken(response.data.accessToken);
+      return Promise.resolve(httpResponse);
+    })
+    .catch(() => {
+      const httpResponse: HTTPResponse = {
+        status: 500,
+      };
+      return Promise.resolve(httpResponse);
+    })
 }
 
 type HTTPResponse = {
   status: number;
-  data: LoginResponseData;
+  data?: LoginResponseData;
+  error?: Error
 };
 
 type LoginResponseData = {
