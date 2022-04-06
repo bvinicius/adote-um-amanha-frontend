@@ -96,4 +96,6 @@ export default Vue.extend({
 .a-text {
   color: #000000;
 }
+
+
 </style>
