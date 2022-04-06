@@ -1,20 +1,19 @@
-// TODO: Remover esta constante assim que for feita a integração com o backend.
-const FAKE_JWT = `eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTY0ODM0MjY5MiwiaWF0IjoxNjQ4MzQyNjkyfQ.DMjUFiMU58Zsbhijk_bzn4fM5D71h6Az5GicWJTPYak`;
+import { HTTP } from "@/api/http-common";
 
-function login(email: string, password: string): Promise<HTTPResponse> {
-  // Método com implementação mocada enquanto não existe integração com o backend.
-  return new Promise((resolve) => {
-    const responseMock = {
-      status: 401,
-      data: {
-        token: FAKE_JWT,
-      },
-    };
+async function login(email: string, password: string): Promise<HTTPResponse> {
+  const response = await HTTP.post('public/autenticacao/login', { email, senha: password })
+    .catch(err => {
+      return Promise.resolve({
+        data: err.data,
+        status: err.statusCode || 500
+      })
+    });
 
-    setTimeout(() => {
-      return resolve(responseMock);
-    }, 500);
-  });
+  const httpResponse: HTTPResponse = {
+    data: response.data,
+    status: response.status
+  };
+  return Promise.resolve(httpResponse);
 }
 
 type HTTPResponse = {
@@ -23,7 +22,7 @@ type HTTPResponse = {
 };
 
 type LoginResponseData = {
-  token: string;
+  accessToken: string;
 };
 
 export default {
