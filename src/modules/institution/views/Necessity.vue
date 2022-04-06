@@ -35,7 +35,12 @@
           prependIcon="mdi-arrow-left"
           outlined
         />
-        <Button title="Editar" color="primary" prependIcon="mdi-pencil" />
+        <Button
+          title="Editar"
+          color="primary"
+          prependIcon="mdi-pencil"
+          @click="onEditButtonClick"
+        />
       </v-row>
     </v-container>
   </v-container>
@@ -55,7 +60,7 @@ export default Vue.extend({
   }),
   async mounted() {
     this.$root.showToolbar("NECESSIDADES");
-    this.necessity = await getNecessity(1);
+    this.necessity = await getNecessity(this.$route.params.id);
   },
   components: {
     EmbeddedVideo,
@@ -70,13 +75,18 @@ export default Vue.extend({
         },
         {
           key: "Categoria",
-          value: Category.toString(this.necessity.category),
+          value: Category.toSingularString(this.necessity.category),
         },
         {
           key: "Subcategoria",
           value: Subcategory.toString(this.necessity.subcategory),
         },
       ];
+    },
+  },
+  methods: {
+    onEditButtonClick() {
+      this.$router.push(`/necessity/${this.necessity.id}/edit`);
     },
   },
 });
@@ -89,6 +99,3 @@ export default Vue.extend({
 
 
 </style>
-
-// - Header // - Title // - Data Cadastro // - Categoria // - Subcategoria // -
-Descrição

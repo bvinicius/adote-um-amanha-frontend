@@ -22,7 +22,7 @@
           <v-btn icon v-bind:href="getUrl" target="_blank">
             <v-icon>mdi-open-in-new</v-icon>
           </v-btn>
-          <div class="">{{ instituition.getAddress() }}</div>
+          <div class="">{{ instituition.address }}</div>
         </v-col>
       </v-row>
     </v-container>
@@ -76,9 +76,7 @@ export default Vue.extend({
       ];
     },
     getUrl() {
-      return (
-        "https://www.google.com/maps/search/" + this.instituition.getAddress()
-      );
+      return "https://www.google.com/maps/search/" + this.instituition.address;
     },
   },
 });
