@@ -16,8 +16,8 @@
         <div class="a-text light">{{ attribute.value }}</div>
       </v-row>
 
-      <v-row class>
-        <v-col>
+      <v-row>
+        <v-col class="px-0 py-0">
           Endereço
           <v-btn icon v-bind:href="getUrl" target="_blank">
             <v-icon>mdi-open-in-new</v-icon>
