@@ -2,11 +2,12 @@
   <v-container class="align-end" fill-height>
     <v-tabs v-model="tab" background-color="transparent" color="basil" grow>
       <v-tabs-items v-model="tab">
-        <v-tab-item key="1"> <NecessityStep1 /> </v-tab-item>
+        <v-tab-item key="1"> conteudo 1 </v-tab-item>
         <v-tab-item key="2"> conteudo 2 </v-tab-item>
         <v-tab-item key="3"> conteudo 3 </v-tab-item>
       </v-tabs-items>
     </v-tabs>
+    <NecessityStep1 :number="tab + 1" class="mr-4"></NecessityStep1>
     <v-row class="justify-center mb-4">
       <Button
         class="mr-4 a-button"
@@ -30,7 +31,7 @@
 <script>
 import Vue from "vue";
 import Button from "../../shared/components/Button.vue";
-import NecessityStep1 from "../../shared/components/RegisterNecessitySteps/NecessityStep1.vue";
+import NecessityStep1 from "../../shared/components/NecessityStep1.vue";
 export default Vue.extend({
   components: { Button, NecessityStep1 },
   data: () => ({
