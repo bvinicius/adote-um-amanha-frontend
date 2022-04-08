@@ -7,7 +7,6 @@ import SplashScreen from "../modules/shared/views/SplashScreen.vue";
 import EditNecessity from "../modules/institution/views/EditNecessity.vue";
 import RegisterNecessity from "../modules/institution/views/RegisterNecessity.vue";
 import { isAuthenticated } from "@/modules/shared/utils/AuthenticationManager";
-import { nextTick } from "vue/types/umd";
 
 Vue.use(VueRouter);
 
@@ -49,10 +48,11 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  if (!isAuthenticated() && to.name !== "Login") {
-    next({ name: 'Login' })
+  const auth = !isAuthenticated();
+  if (auth && to.name !== "Login") {
+    next({ name: "Login" });
   }
-  next()
-})
+  next();
+});
 
 export default router;

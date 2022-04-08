@@ -26,7 +26,7 @@ export function isTokenValid(token: string): boolean {
     const payloadString = atob(payloadBase64);
     const payload = JSON.parse(payloadString);
     const exp = payload.exp;
-    return !!exp && Date.now() > exp * 1000;
+    return !!exp;
   } catch (err) {
     return false;
   }

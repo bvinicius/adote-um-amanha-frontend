@@ -56,8 +56,6 @@ import Button from "../components/Button.vue";
 import loginService from "../../institution/services/LoginService";
 import InputValidations from "../utils/InputValidations";
 import Link from "../components/Link.vue";
-import { Category } from "../enums/Category";
-import { Subcategory } from "../enums/Subcategory";
 
 export default Vue.extend({
   components: {
