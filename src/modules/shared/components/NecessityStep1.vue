@@ -1,6 +1,6 @@
 <template>
-  <v-stepper :value="number" class="mr-15 a-stepper">
-    <v-stepper-header>
+  <v-stepper :value="number" class="a-stepper elevation-0">
+    <v-stepper-header class="a-stepper__header">
       <v-stepper-step step="1"> Select campaign settings </v-stepper-step>
 
       <v-divider></v-divider>
@@ -20,8 +20,11 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .a-stepper {
+  &__header {
+    box-shadow: none !important;
+  }
   min-width: 300px;
 }
 </style>

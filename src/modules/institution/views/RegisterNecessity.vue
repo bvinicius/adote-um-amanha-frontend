@@ -1,30 +1,34 @@
 <template>
-  <v-container class="align-end" fill-height>
-    <v-tabs v-model="tab" background-color="transparent" color="basil" grow>
+  <v-container class="align-start" fill-height>
+    <v-tabs v-model="tab" grow>
       <v-tabs-items v-model="tab">
         <v-tab-item key="1"> conteudo 1 </v-tab-item>
         <v-tab-item key="2"> conteudo 2 </v-tab-item>
         <v-tab-item key="3"> conteudo 3 </v-tab-item>
       </v-tabs-items>
     </v-tabs>
-    <NecessityStep1 :number="tab + 1" class="mr-4"></NecessityStep1>
-    <v-row class="justify-center mb-4">
-      <Button
-        class="mr-4 a-button"
-        title="Voltar"
-        color="primary"
-        prependIcon="mdi-arrow-left"
-        outlined
-        @click="onBackButtonClick"
-      />
-      <Button
-        class="a-button"
-        :title="buttonTitle"
-        color="primary"
-        :appendIcon="buttonIcon"
-        @click="onNextButtonClick"
-      />
-    </v-row>
+    <v-col class="justify-center align-self-end">
+      <v-row class="justify-center mb-5">
+        <NecessityStep1 :number="tab + 1" class="align-center"></NecessityStep1>
+      </v-row>
+      <v-row class="justify-center mb-4 align-self-end">
+        <Button
+          class="mr-2 a-button"
+          title="Voltar"
+          color="primary"
+          prependIcon="mdi-arrow-left"
+          outlined
+          @click="onBackButtonClick"
+        />
+        <Button
+          class="a-button"
+          :title="buttonTitle"
+          color="primary"
+          :appendIcon="buttonIcon"
+          @click="onNextButtonClick"
+        />
+      </v-row>
+    </v-col>
   </v-container>
 </template>
 
