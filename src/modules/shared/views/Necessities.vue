@@ -16,7 +16,10 @@
       :key="necessity.id"
       class="justify-center mx-2 mb-2"
     >
-      <NecessityCard :necessity="necessity" />
+      <NecessityCard
+        :necessity="necessity"
+        @click="onNecessityClick(necessity)"
+      />
     </v-row>
   </v-container>
 </template>
@@ -34,6 +37,11 @@ export default Vue.extend({
   async mounted() {
     this.$root.showToolbar("NECESSIDADES");
     this.necessities = await getNecessities();
+  },
+  methods: {
+    onNecessityClick(necessity) {
+      this.$router.push(`/necessity/${necessity.id}`);
+    },
   },
 });
 </script>

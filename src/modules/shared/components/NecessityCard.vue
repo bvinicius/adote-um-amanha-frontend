@@ -1,5 +1,5 @@
 <template>
-  <div class="card px-5 py-3" v-ripple>
+  <div class="card px-5 py-3" v-ripple @click="$emit('click')">
     <v-col class="py-0 px-0">
       <div class="card__title">{{ necessity.title }}</div>
       <div class="card__subtitle">{{ subcategory }}</div>
