@@ -1,16 +1,18 @@
 <template>
   <v-container>
-    <v-row class="justify-center mt-3 mx-1">
+    <v-row class="justify-center align-center my-3 mx-1">
       <Input
-        label="Pesquisar..."
+        placeholder="Pesquisar..."
         prepend-inner-icon="mdi-magnify"
         class="mr-2"
+        variant="round"
+        hide-details
+        elevation="3"
       />
       <v-btn fab color="primary"
         ><v-icon color="black">mdi-filter-variant</v-icon></v-btn
       >
     </v-row>
-
     <v-row
       v-for="necessity in necessities"
       :key="necessity.id"
@@ -27,6 +29,7 @@
         title="Criar"
         prependIcon="mdi-plus"
         color="primary"
+        elevation="4"
       />
     </v-row>
   </v-container>
