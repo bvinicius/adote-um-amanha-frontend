@@ -1,5 +1,5 @@
 <template>
-  <v-container fill-height class="align-start">
+  <v-container>
     <v-row class="justify-center mt-3 mx-1">
       <Input
         label="Pesquisar..."
@@ -10,19 +10,30 @@
         ><v-icon color="black">mdi-filter-variant</v-icon></v-btn
       >
     </v-row>
+
+    <v-row
+      v-for="necessity in necessities"
+      :key="necessity.id"
+      class="justify-center mx-2 mb-2"
+    >
+      <NecessityCard :necessity="necessity" />
+    </v-row>
   </v-container>
 </template>
 
 <script>
+import { getNecessities } from "@/modules/institution/necessityService";
 import Vue from "vue";
 import Input from "../components/Input.vue";
+import NecessityCard from "../components/NecessityCard.vue";
 export default Vue.extend({
-  components: { Input },
+  components: { Input, NecessityCard },
   data: () => ({
     necessities: [],
   }),
-  mounted() {
+  async mounted() {
     this.$root.showToolbar("NECESSIDADES");
+    this.necessities = await getNecessities();
   },
 });
 </script>
