@@ -6,33 +6,18 @@
           <div class="a-text__subtitle">
             Sua solicitação refere-se a um bem ou a um serviço?
           </div>
-          <v-container>
-            <v-card outlined>
-              <v-card-title class="align-center"> Bem </v-card-title>
-            </v-card>
-            <v-card outlined class="align-center">
-              <v-card-title> Serviço </v-card-title>
-            </v-card>
-          </v-container>
+          <SelectCardGroup
+            :options="step1Options"
+            @cardSelected="onCategorySelected"
+          />
         </v-tab-item>
         <v-tab-item key="2">
           <div class="a-text__subtitle">No que você precisa de ajuda?</div>
           <v-container>
-            <v-card outlined>
-              <v-card-title class="align-center"> Saúde </v-card-title>
-            </v-card>
-            <v-card outlined class="align-center">
-              <v-card-title> Profissionalização </v-card-title>
-            </v-card>
-            <v-card outlined>
-              <v-card-title class="align-center"> Educação </v-card-title>
-            </v-card>
-            <v-card outlined>
-              <v-card-title class="align-center"> Alimentação </v-card-title>
-            </v-card>
-            <v-card outlined>
-              <v-card-title class="align-center"> Outros </v-card-title>
-            </v-card>
+            <SelectCardGroup
+              :options="step2Options"
+              @cardSelected="onSubcategorySelected"
+            />
           </v-container>
         </v-tab-item>
         <v-tab-item key="3">
@@ -71,10 +56,20 @@
 import Vue from "vue";
 import Button from "../../shared/components/Button.vue";
 import Stepper from "../../shared/components/Stepper.vue";
+import SelectCardGroup from "../../shared/components/SelectCards/SelectCardGroup.vue";
+import CategoryUtils from "../../shared/enums/Category";
+import { Category } from "../../shared/enums/Category";
+import Subcategory from "../../shared/enums/Subcategory";
 export default Vue.extend({
-  components: { Button, Stepper },
+  components: { Button, Stepper, SelectCardGroup },
   data: () => ({
     tab: 0,
+    step1Options: [
+      CategoryUtils.toSingularObject(Category.asset),
+      CategoryUtils.toSingularObject(Category.service),
+    ],
+    step2Options: Subcategory.allObjects(),
+    necessity: {},
   }),
   methods: {
     onNextButtonClick() {
@@ -82,6 +77,14 @@ export default Vue.extend({
     },
     onBackButtonClick() {
       if (this.tab > 0) this.tab--;
+    },
+    onCategorySelected(category) {
+      this.necessity.category = category;
+      console.log(this.necessity);
+    },
+    onSubcategorySelected(subcategory) {
+      this.necessity.subcategory = subcategory;
+      console.log(this.necessity);
     },
   },
   mounted() {

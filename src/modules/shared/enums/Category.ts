@@ -75,12 +75,12 @@ function allObjects(categoryMap: CategoryMap): EnumerableObject[] {
 }
 
 const pluralCategoryStrings: CategoryMap = {
-  [Category.asset]: "Bens Materiais",
+  [Category.asset]: "Bens",
   [Category.service]: "Serviços",
 };
 
 const singularCategoryStrings: CategoryMap = {
-  [Category.asset]: "Bem Material",
+  [Category.asset]: "Bem",
   [Category.service]: "Serviço",
 };
 
