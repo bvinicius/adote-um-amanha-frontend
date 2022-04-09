@@ -21,6 +21,14 @@
         @click="onNecessityClick(necessity)"
       />
     </v-row>
+    <v-row class="justify-end mr-6">
+      <Button
+        class="a-fab"
+        title="Criar"
+        prependIcon="mdi-plus"
+        color="primary"
+      />
+    </v-row>
   </v-container>
 </template>
 
@@ -29,8 +37,10 @@ import { getNecessities } from "@/modules/institution/necessityService";
 import Vue from "vue";
 import Input from "../components/Input.vue";
 import NecessityCard from "../components/NecessityCard.vue";
+import Button from "../components/Button.vue";
+
 export default Vue.extend({
-  components: { Input, NecessityCard },
+  components: { Input, NecessityCard, Button },
   data: () => ({
     necessities: [],
   }),
@@ -46,4 +56,10 @@ export default Vue.extend({
 });
 </script>
 
-<style></style>
+<style scoped>
+.a-fab {
+  max-width: 120px;
+  position: fixed;
+  bottom: 12px;
+}
+</style>
