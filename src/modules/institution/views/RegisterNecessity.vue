@@ -17,8 +17,36 @@
             </v-card>
           </v-container>
         </v-tab-item>
-        <v-tab-item key="2"> conteudo 2 </v-tab-item>
-        <v-tab-item key="3"> conteudo 3 </v-tab-item>
+        <v-tab-item key="2">
+          <div class="a-text__subtitle">No que você precisa de ajuda?</div>
+          <v-container>
+            <v-card outlined>
+              <v-card-actions> </v-card-actions>
+              <v-card-title class="align-center"> Saúde </v-card-title>
+            </v-card>
+            <v-card outlined class="aling-end">
+              <v-card-actions> </v-card-actions>
+              <v-card-title> Profissionalização </v-card-title>
+            </v-card>
+            <v-card outlined>
+              <v-card-actions> </v-card-actions>
+              <v-card-title class="align-center"> Educação </v-card-title>
+            </v-card>
+            <v-card outlined>
+              <v-card-actions> </v-card-actions>
+              <v-card-title class="align-center"> Alimentação </v-card-title>
+            </v-card>
+            <v-card outlined>
+              <v-card-actions> </v-card-actions>
+              <v-card-title class="align-center"> Outros </v-card-title>
+            </v-card>
+          </v-container>
+        </v-tab-item>
+        <v-tab-item key="3">
+          <div class="a-text__subtitle">
+            Para finalizar, conte um pouco mais sobre a sua solicitação.
+          </div>
+        </v-tab-item>
       </v-tabs-items>
     </v-tabs>
     <v-col class="justify-center align-self-end">
