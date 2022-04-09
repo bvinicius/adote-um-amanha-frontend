@@ -2,14 +2,28 @@
   <v-container class="align-start" fill-height>
     <v-tabs v-model="tab" grow>
       <v-tabs-items v-model="tab">
-        <v-tab-item key="1"> conteudo 1 </v-tab-item>
+        <v-tab-item key="1">
+          <div class="a-text__subtitle">
+            Sua solicitação refere-se a um bem ou a um serviço?
+          </div>
+          <v-container>
+            <v-card outlined>
+              <v-card-actions> </v-card-actions>
+              <v-card-title class="align-center"> Bem </v-card-title>
+            </v-card>
+            <v-card outlined class="aling-end">
+              <v-card-actions> </v-card-actions>
+              <v-card-title> Serviço </v-card-title>
+            </v-card>
+          </v-container>
+        </v-tab-item>
         <v-tab-item key="2"> conteudo 2 </v-tab-item>
         <v-tab-item key="3"> conteudo 3 </v-tab-item>
       </v-tabs-items>
     </v-tabs>
     <v-col class="justify-center align-self-end">
       <v-row class="justify-center mb-5">
-        <NecessityStep1 :number="tab + 1" class="align-center"></NecessityStep1>
+        <Stepper :number="tab + 1" class="align-center"></Stepper>
       </v-row>
       <v-row class="justify-center mb-4 align-self-end">
         <Button
@@ -35,9 +49,9 @@
 <script>
 import Vue from "vue";
 import Button from "../../shared/components/Button.vue";
-import NecessityStep1 from "../../shared/components/NecessityStep1.vue";
+import Stepper from "../../shared/components/Stepper.vue";
 export default Vue.extend({
-  components: { Button, NecessityStep1 },
+  components: { Button, Stepper },
   data: () => ({
     tab: 0,
   }),
