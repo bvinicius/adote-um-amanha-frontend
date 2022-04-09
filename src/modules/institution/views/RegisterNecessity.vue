@@ -8,11 +8,9 @@
           </div>
           <v-container>
             <v-card outlined>
-              <v-card-actions> </v-card-actions>
               <v-card-title class="align-center"> Bem </v-card-title>
             </v-card>
-            <v-card outlined class="aling-end">
-              <v-card-actions> </v-card-actions>
+            <v-card outlined class="align-center">
               <v-card-title> Serviço </v-card-title>
             </v-card>
           </v-container>
@@ -21,23 +19,18 @@
           <div class="a-text__subtitle">No que você precisa de ajuda?</div>
           <v-container>
             <v-card outlined>
-              <v-card-actions> </v-card-actions>
               <v-card-title class="align-center"> Saúde </v-card-title>
             </v-card>
-            <v-card outlined class="aling-end">
-              <v-card-actions> </v-card-actions>
+            <v-card outlined class="align-center">
               <v-card-title> Profissionalização </v-card-title>
             </v-card>
             <v-card outlined>
-              <v-card-actions> </v-card-actions>
               <v-card-title class="align-center"> Educação </v-card-title>
             </v-card>
             <v-card outlined>
-              <v-card-actions> </v-card-actions>
               <v-card-title class="align-center"> Alimentação </v-card-title>
             </v-card>
             <v-card outlined>
-              <v-card-actions> </v-card-actions>
               <v-card-title class="align-center"> Outros </v-card-title>
             </v-card>
           </v-container>
@@ -113,5 +106,8 @@ export default Vue.extend({
 }
 .a-button {
   max-width: 160px;
+}
+.align-center {
+  align-items: center;
 }
 </style>
