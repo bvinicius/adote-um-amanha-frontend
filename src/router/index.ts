@@ -20,7 +20,7 @@ const routes: Array<RouteConfig> = [
     component: Login,
   },
   {
-    path: "/necessities/",
+    path: "/home/",
     name: "Necessities",
     component: Necessities,
   },
